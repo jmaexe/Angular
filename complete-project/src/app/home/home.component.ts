@@ -9,5 +9,5 @@ import { AllComicsCharactersComponent } from "../all-comics-characters/all-comic
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-
+  data: string = 'andrea';
 }
