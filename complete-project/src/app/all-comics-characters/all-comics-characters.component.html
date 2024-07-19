@@ -1,0 +1,26 @@
+<div class="container flex flex-wrap justify-center gap-4">
+  <div
+    class="card bg-base-100 w-96 shadow-2xl"
+    *ngFor="let character of characters"
+  >
+    <figure>
+      <!-- <img
+    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
+    alt="Shoes"
+  /> -->
+    </figure>
+    <div class="card-body">
+      <h2 class="card-title">
+        {{ character.name }}
+        <div class="badge badge-secondary">{{ character.id }}</div>
+      </h2>
+      <p>{{ character.description }}</p>
+      <div class="card-actions justify-end">
+        <div class="badge badge-outline">{{ character.modified }}</div>
+        <!-- <div class="badge badge-outline">
+      <a [href]="character.resourceURI"> more info </a>
+    </div> -->
+      </div>
+    </div>
+  </div>
+</div>
