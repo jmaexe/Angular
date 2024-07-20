@@ -3,5 +3,7 @@ export interface CharacterData {
     name: string,
     description: string,
     modified: string,
-    resourceURI: string
+    resourceURI: string,
+    thumbnail: {path: string, extension: string}
+    // imgUrl: string
   }

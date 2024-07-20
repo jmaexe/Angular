@@ -10,4 +10,5 @@ import { AllComicsCharactersComponent } from "../all-comics-characters/all-comic
 })
 export class HomeComponent {
   data: string = 'andrea';
+  
 }

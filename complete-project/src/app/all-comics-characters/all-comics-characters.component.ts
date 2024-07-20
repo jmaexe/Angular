@@ -1,8 +1,10 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MarvelApiService } from '../services/marvel-api.service';
 import {CharacterData} from '../models/CharacterData.interface';
 import { HttpClientModule } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Perform } from '../classes/perform.class';
 
 
 @Component({
@@ -16,14 +18,22 @@ import { HttpClientModule } from '@angular/common/http';
 
 
 
-export class AllComicsCharactersComponent {
 
-  characters: CharacterData[] = [];
+
+export class AllComicsCharactersComponent implements OnInit {
+
+  // characters: CharacterData[] = []; 
+  characters = new Perform<CharacterData[]>();
 
   constructor(private marvelApiService: MarvelApiService) {
-    this.characters = marvelApiService.characters;
 
   }
+  ngOnInit(): void {
+    // this.characters.load(this.marvelApiService.getAllCharacters())
+    // this.marvelApiService.getAllCharacters().subscribe(data => this.characters = data)
+  }
+
+
 
 
 }

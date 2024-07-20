@@ -1,26 +1,41 @@
 <div class="container flex flex-wrap justify-center gap-4">
-  <div
-    class="card bg-base-100 w-96 shadow-2xl"
-    *ngFor="let character of characters"
-  >
-    <figure>
-      <!-- <img
-    src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-    alt="Shoes"
-  /> -->
-    </figure>
-    <div class="card-body">
-      <h2 class="card-title">
-        {{ character.name }}
-        <div class="badge badge-secondary">{{ character.id }}</div>
-      </h2>
-      <p>{{ character.description }}</p>
-      <div class="card-actions justify-end">
-        <div class="badge badge-outline">{{ character.modified }}</div>
-        <!-- <div class="badge badge-outline">
-      <a [href]="character.resourceURI"> more info </a>
-    </div> -->
+  <!--  -->
+  <span
+    class="loading loading-spinner loading-lg"
+    *ngIf="characters.isLoading; else showCharacters"
+  ></span>
+  <ng-template #showCharacters>
+    <ng-container *ngIf="characters.data != undefined; else showEmptyList">
+      <div
+        class="card bg-base-100 w-96 shadow-2xl"
+        *ngFor="let character of characters.data"
+      >
+        <figure>
+          <img
+            [src]="
+              character.thumbnail.path + '.' + character.thumbnail.extension
+            "
+            [alt]="character.name + 'image'"
+          />
+        </figure>
+        <div class="card-body">
+          <h2 class="card-title">
+            {{ character.name }}
+            <div class="badge badge-secondary">{{ character.id }}</div>
+          </h2>
+          <p>{{ character.description }}</p>
+          <div class="card-actions justify-end">
+            <div class="badge badge-outline">{{ character.modified }}</div>
+            <div class="badge badge-outline">
+              <a [href]="character.resourceURI"> more info </a>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
+    </ng-container>
+  </ng-template>
+
+  <ng-template #showEmptyList>
+    <span>Empty List</span>
+  </ng-template>
 </div>
