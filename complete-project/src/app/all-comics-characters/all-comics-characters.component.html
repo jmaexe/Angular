@@ -1,11 +1,20 @@
-<div class="container flex flex-wrap justify-center gap-4">
-  <!--  -->
+<div class="container flex flex-col items-center">
+  <input
+    type="text"
+    placeholder="Search Character"
+    class="input input-bordered w-full max-w-xs"
+  />
+
   <span
     class="loading loading-spinner loading-lg"
     *ngIf="characters.isLoading; else showCharacters"
   ></span>
+
   <ng-template #showCharacters>
-    <ng-container *ngIf="characters.data != undefined; else showEmptyList">
+    <ng-container
+      *ngIf="characters.data != undefined; else showEmptyList"
+      class="flex flex-wrap justify-center gap-4"
+    >
       <div
         class="card bg-base-100 w-96 shadow-2xl"
         *ngFor="let character of characters.data"
